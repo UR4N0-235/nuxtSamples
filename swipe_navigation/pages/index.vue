@@ -6,33 +6,26 @@ import ContentHomeVue from '../components/contentHome.vue'
 export default Vue.extend({
   components: {
     ContentAboutVue,
-    ContentHomeVue
+    ContentHomeVue,
   },
   data() {
-    return{
+    return {
       currentTab: 'ContentHomeVue',
-      tabs: [
-      'ContentHomeVue',
-      'ContentAboutVue'
-      ],
+      tabs: ['ContentHomeVue', 'ContentAboutVue'],
       touch: {
         startX: 0,
-        endX: 0
-      }
+        endX: 0,
+      },
     }
   },
   mounted() {
     this.$nextTick(() => {
-      window.addEventListener('scroll', this.onScroll)
       window.addEventListener('touchstart', (event) => this.onTouchStart(event))
       window.addEventListener('touchmove', (event) => this.onTouchMove(event))
       window.addEventListener('touchend', () => this.onTouchEnd())
     })
   },
   methods: {
-    changeTab(tabName: string) {
-      this.currentTab = tabName
-    },
     onTouchStart(event: any) {
       this.touch.startX = event.touches[0].clientX
       this.touch.endX = 0
@@ -64,7 +57,7 @@ export default Vue.extend({
         this.currentTab = this.tabs[index - 1]
       }
     },
-  }
+  },
 })
 </script>
 
